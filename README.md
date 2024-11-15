@@ -9,3 +9,7 @@ A customer and vendor based ticketing system
 * TicketReleaseRate - Shows how often tickets are restocked by vendors.
 
 ----
+
+## CLI
+
+At the start, you will enter the total number of tickets into the system. After that, you will be prompeted to choose whether you want to create a vendor, create a customer, buy tickets as a customer or exit the system.
