@@ -52,6 +52,7 @@ public class Main{
                     newVendor.setTicketsByVendor();
                     vendors.add(newVendor);
                     log.log(Level.INFO, "Vendor " + vendorName + " created on port " + newVendor.getServerSocket().getLocalPort());
+                    newVendor.run();
                     break;
 
                 case 2:
@@ -65,6 +66,7 @@ public class Main{
                     customerThread.start();
                     customers.add(newCustomer);
                     log.log(Level.INFO, "Customer " + customerName + " created on port " + newCustomer.getServerSocket().getLocalPort());
+                    newCustomer.run();
                     break;
 
                 case 3:
@@ -105,7 +107,7 @@ public class Main{
                     break;
 
             }
-            System.out.println("Tickets available: " + ticketPool.getTicketsAdded());
+            System.out.println("Tickets available: " + ticketPool.getTicketsAvailable());
         }
     }
 
