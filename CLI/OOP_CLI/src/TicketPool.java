@@ -8,9 +8,9 @@ public class TicketPool {
         this.maximumTicketCapacity = maximumTicketCapacity;
     }
 
-    public void addTickets(String vendorName, int ticketsAdded){
+    public synchronized void addTickets(String vendorName, int ticketsAdded){
 
-        ticketsAvailable += ticketsAdded;
+        this.ticketsAvailable += ticketsAdded;
         System.out.println(vendorName + " added " + ticketsAdded + " tickets");
     }
 
