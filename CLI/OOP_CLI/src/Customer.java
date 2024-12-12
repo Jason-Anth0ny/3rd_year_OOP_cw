@@ -5,14 +5,13 @@ public class Customer implements Runnable{
     private String customerName;
     private String customerId;
     private int ticketsBought = 0;
-    private ServerSocket serverSocket;
     private boolean active = true;
+    private int purchaseRate;
 
-    public Customer(String customerName, String customerId) throws IOException {
+    public Customer(String customerName, String customerId, int purchaseRate) throws IOException {
         this.customerName = customerName;
         this.customerId = customerId;
-
-        this.serverSocket =  new ServerSocket(0);
+        this.purchaseRate = purchaseRate;
     }
 
     public String getCustomerName() {
@@ -25,10 +24,6 @@ public class Customer implements Runnable{
 
     public String getCustomerId() {
         return customerId;
-    }
-
-    public ServerSocket getServerSocket() {
-        return serverSocket;
     }
 
     public void setActive(boolean active) {
@@ -50,18 +45,16 @@ public class Customer implements Runnable{
     @Override
     public void run() {
         while (active) {
+            int sleepTime = this.purchaseRate * 1000;
             try {
-                var clientSocket = serverSocket.accept();
-                System.out.println("Connection accepted on port " + serverSocket.getLocalPort());
-
-                clientSocket.close();
-                Thread.sleep(1000);
+                this.ticketsBought ++;
+                System.out.println(Main.BLUE + Main.buffer + "Customer " + customerName + " has bought " + ticketsBought  + " tickets" + Main.buffer + Main.buffer);
+                Thread.sleep(sleepTime);
+                this.active = false;
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 System.out.println(customerName + " was interrupted.");
                 break;
-            } catch (IOException e) {
-                throw new RuntimeException(e);
             }
         }
     }

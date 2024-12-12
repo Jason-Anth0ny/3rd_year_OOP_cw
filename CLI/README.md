@@ -12,4 +12,6 @@ A customer and vendor based ticketing system
 
 ## CLI
 
-At the start, you will enter the total number of tickets into the system. After that, you will be prompeted to choose whether you want to create a vendor, create a customer, buy tickets as a customer or exit the system.
+- The system requests the user to set the above four configurations. This is the only part of the program the user can influence. Once the user enters the configurations, vendors and customers will be dyanamically created and carry out their functions i.e. releasing tickets and buying tickets respectively. 
+- Once all the tickets are sold, customer and vendor threads would all be closed and the system will terminate. 
+- This program is meant to be a simulation for the application that has been built, meant to show the most basic functionality of a ticketing platform.
